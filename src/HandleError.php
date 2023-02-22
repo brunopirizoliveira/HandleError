@@ -5,17 +5,24 @@ namespace SZH\HandleError;
 class HandleError {
 
     private $dict;
+    private $trace;
 
-    public function __construct($jsonFile) {
+    public function __construct() {
         // $this->dict = (new Dictionary())->getErrors();
-        $this->dict = $jsonFile;
+        $jsonString = file_get_contents(storage_path().DIRECTORY_SEPARATOR.env('HANDLE_ERROR_JSON'));
+        $this->dict = json_decode($jsonString, true);
     }
 
-    public function handleError($serverError)
+    public function setTrace($trace)
     {
-        $handledError = $this->dict[$serverError];        
+        $this->trace = $trace;
+    }
 
-        header("Content-Type: application/json");
+    public function handleError($statusCode)
+    {
+        // dd($error->getTraceAsString());
+        $handledError = $this->dict[$statusCode];        
+        $handledError["trace"] = $this->trace;
         return json_encode($handledError);  
     }
 
