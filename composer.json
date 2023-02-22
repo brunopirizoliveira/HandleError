@@ -17,14 +17,14 @@
     }],
 
     "autoload": {
-        "classmap": [
-          "src/"
-        ]
-      },
+        "psr-4": {
+          "SZH\\HandleError\\": "src"
+        }
+    },
 
     "require": {
 
-        "php": ">=7.0"
+        "php": "^7.0 || ^8.0"
 
     }
 
