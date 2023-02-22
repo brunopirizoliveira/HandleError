@@ -1,5 +1,9 @@
 <?php
 
+namespace SZH\HandleError;
+
+use Exception;
+
 class CustomException extends Exception
 {
 
