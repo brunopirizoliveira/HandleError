@@ -1,0 +1,31 @@
+{
+
+    "name": "szh/handle-error",
+
+    "description": "Library to handler error",
+
+    "type": "library",
+
+    "license": "GPL-3.0-or-later",
+
+    "author": [{
+
+        "name": "Bruno Pires Oliveira",
+
+        "email": "bruno.oliveira@fortics.com.br"
+
+    }],
+
+    "autoload": {
+        "classmap": [
+          "src/"
+        ]
+      },
+
+    "require": {
+
+        "php": ">=7.0"
+
+    }
+
+}
