@@ -18,7 +18,8 @@
 
     "autoload": {
         "psr-4": {
-          "SZH\\HandleError\\": "src/"
+          "SZH\\HandleError\\": "src/HandleError.php",
+          "SZH\\CustomException\\": "src/CustomException.php"
         }
     },
 
