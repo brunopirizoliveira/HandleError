@@ -1,6 +1,6 @@
 <?php
 
-namespace SZH\CustomException;
+namespace SZH\HandleError;
 
 use Exception;
 
