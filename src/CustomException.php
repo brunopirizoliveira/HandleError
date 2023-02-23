@@ -18,6 +18,6 @@ class CustomException extends Exception
         $customHandleError->setTrace($this->getTraceAsString());
         $handleError = $customHandleError->handleError($this->getCode());
         
-        return json_encode($handleError);  
+        return $handleError;
     }
 }
