@@ -7,10 +7,6 @@ class HandleError {
     private $dict;
     private $trace;
     private $message;
-    private $error;
-    private $subcode;
-    private $code;
-    private $context;
 
     public function __construct() {
         // $this->dict = (new Dictionary())->getErrors();
@@ -18,56 +14,18 @@ class HandleError {
         $this->dict = json_decode($jsonString, true);
     }
 
-    public function handleError($statusCode)
+    public function handleError($customLog)
     {
-        // dd($error->getTraceAsString());
-        $handledError = $this->dict[$statusCode];
-        $handledError["message"] = $this->message;
-        $handledError["trace"] = $this->trace;
-        return json_encode($handledError);  
-    }
+        if(array_key_exists($customLog->getCode(), $this->dict)) 
+        {
+            $handledError = $this->dict[$customLog->getCode()];
 
-    public function createError()
-    {
-        $handledError["message"] = $this->message;
-        $handledError["trace"] = $this->trace;
-        $handledError["error"] = $this->error;
-        $handledError["context"] = $this->context;
-        $handledError["code"] = $this->code;
-        $handledError["subcode"] = $this->subcode;
+            $customLog->setError($handledError['error'])->setCode($handledError['code'])->setSubcode($handledError['subCode'])->setContext($handledError['context']);
 
-        return $handledError;
-    }
+            return $customLog->getCustomLog(); 
+        }
 
-
-    public function setMessage($message)
-    {
-        $this->message = $message;
-    }
-
-    public function setError($error)
-    {
-        $this->error = $error;
-    }
-
-    public function setTrace($trace)
-    {
-        $this->trace = $trace;
-    }
-
-    public function setContext($context)
-    {
-        $this->context = $context;
-    }
-
-    public function setCode($code)
-    {
-        $this->code = $code;
-    }
-
-    public function setSubcode($subcode)
-    {
-        $this->subcode = $subcode;
+        return false;
     }
 
 }
