@@ -16,6 +16,7 @@ class CustomException extends Exception
         
         $customHandleError = new \SZH\HandleError\HandleError();
         $customHandleError->setTrace($this->getTraceAsString());
+        $customHandleError->setMessage($this->message);
         $handleError = $customHandleError->handleError($this->getCode());
         
         return $handleError;
