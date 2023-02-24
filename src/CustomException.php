@@ -15,7 +15,7 @@ class CustomException extends Exception
     public function customMessage() 
     {
         $customHandleError = new HandleError();
-        $handleError = $customHandleError->handleError((new CustomLog())->setMessage($this->message)->setCode($this->code)->setTrace($this->getTraceAsString()));
+        $handleError = $customHandleError->handleError((new CustomLog())->setCode($this->code)->setTrace($this->getTraceAsString()));
         if(!$handleError) {
             $this->createMessage();
         }

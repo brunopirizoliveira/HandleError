@@ -20,7 +20,7 @@ class HandleError {
         {
             $handledError = $this->dict[$customLog->getCode()];
 
-            $customLog->setError($handledError['error'])->setCode($handledError['code'])->setSubcode($handledError['subCode'])->setContext($handledError['context']);
+            $customLog->setMessage($handledError['message'])->setError($handledError['error'])->setCode($handledError['code'])->setSubcode($handledError['subCode'])->setContext($handledError['context']);
 
             return $customLog->getCustomLog(); 
         }
